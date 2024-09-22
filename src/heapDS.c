@@ -26,9 +26,11 @@ struct heap *createHeap(int maxSize)
     return h;
 }
 
-void append(int index, int data)
+void swap(int *first, int *second)
 {
-    
+    int tmp = *first;
+    *first = *second;
+    *second = tmp;
 }
 
 /**
@@ -36,29 +38,28 @@ void append(int index, int data)
  * @heap structure
  * @data: data to be stored
  */
-
 void insert(struct heap *h, int data)
 {
-    if(!h->curr_size){
-        h->array[getParentIndex(h->curr_size)] = data;
-        h->curr_size++;
+    // Check if the heap is full (assuming capacity is defined)
+    if (h->curr_size >= h->max_size) {
+        printf("Heap is full. Cannot insert more elements.\n");
         return;
     }
+
+    // Insert the new data at the end of the heap array
     int index = h->curr_size;
-    append(index, data);
-    while(data > h->array[index-1]){
-            h->array[index] = h->array[index-1];
-            index--;
-    }
-    h->array[index - 1];
+    h->array[index] = data;  // Insert at the last position
     h->curr_size++;
 
+    // Heapify up (fix the heap property)
+    while (index != 0 && h->array[getParentIndex(index)] < h->array[index]) {
+        // Swap with parent if the parent is smaller
+        int parentIndex = getParentIndex(index);
+        swap(&h->array[parentIndex], &h->array[index]);
+
+        // Move up to the parent index
+        index = parentIndex;
+    }
 }
 
-void display(struct heap *h)
-{
-    for(int i = 0; i < h->curr_size; i++)
-        printf("%d ", h->array[i]);
-    printf("\n");
-}
 

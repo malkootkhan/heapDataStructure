@@ -9,7 +9,25 @@ void test_createHeap(void) {
     CU_ASSERT(h->curr_size == 0);
     CU_ASSERT(h != NULL);
 }
+void test_insert(void)
+{
 
+
+    struct heap *h = createHeap(6);
+    insert(h, 10);
+    insert(h, 20);
+    insert(h, 30);
+    insert(h, 40);
+    insert(h, 50);
+
+    CU_ASSERT(h->data[0] == 50);
+    CU_ASSERT(h->data[1] == 40);
+    CU_ASSERT(h->data[2] == 20);
+    CU_ASSERT(h->data[3] == 10);
+    CU_ASSERT(h->data[4] == 30);
+
+    display(h);
+}
 
 int main() {
     // Initialize the CUnit test registry
@@ -25,7 +43,7 @@ int main() {
     }
 
     // Add the test cases to the suite
-    if ((CU_add_test(pSuite, "test of createHeap()", test_createHeap) == NULL)) {
+    if ((CU_add_test(pSuite, "test of test_insert()", test_insert) == NULL) ) {
         CU_cleanup_registry();
         return CU_get_error();
     }

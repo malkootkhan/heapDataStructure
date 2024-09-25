@@ -7,15 +7,16 @@
  * struct heap
  * @max_size:  maximum size of heap
  * @curr_size: currently available data
- * @array:     data storage
+ * @data:     data storage
  */
-struct heap
-{
+
+struct heap {
+    int *data;
     int max_size;
     int curr_size;
-    int *array;
 };
-
-struct heap *createHeap(int maxSize);
+struct heap *createHeap(int cap);
+void insert(struct heap *h, int data);
+void display(struct heap *h);
 
 #endif

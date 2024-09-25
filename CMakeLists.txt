@@ -8,6 +8,9 @@ project(heapProject C)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
+#set debug flag
+set(CMAKE_BUILD_TYPE Debug)
+
 # Manually specify the paths to the CUnit library and headers
 set(CUNIT_INCLUDE_DIR /usr/include/CUnit)
 set(CUNIT_LIBRARY /usr/lib/x86_64-linux-gnu/libcunit.so)

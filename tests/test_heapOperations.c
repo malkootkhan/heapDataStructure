@@ -27,6 +27,11 @@ void test_insert(void)
     CU_ASSERT(h->data[4] == 30);
 
     display(h);
+    CU_ASSERT(delete(h) == 50);
+    display(h);
+    CU_ASSERT(delete(h) == 40);
+    display(h);
+
 }
 
 int main() {

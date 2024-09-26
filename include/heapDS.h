@@ -15,8 +15,17 @@ struct heap {
     int max_size;
     int curr_size;
 };
+/*lower layer functions*/
+void heapifyUp(struct heap *h, int index);
+void heapifyDown(struct heap *h, int index);
+int parentIndex(int index);
+int leftChild(int index);
+int rightChild(int index);
+
+
 struct heap *createHeap(int cap);
 void insert(struct heap *h, int data);
+int delete(struct heap *h);
 void display(struct heap *h);
 
 #endif
